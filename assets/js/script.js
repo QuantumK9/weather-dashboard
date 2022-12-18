@@ -77,6 +77,7 @@ $("#search-button").on("click", function (event) {
         }
         // console.log();
       });
+      displayCurrentDay(fiveDaysData);
       // console.log(timeStamps);
 
       // console.log(response.list[0].dt);
@@ -90,4 +91,15 @@ $("#search-button").on("click", function (event) {
 //helper functions
 function convertingWindToKph(windSpeed) {
   return windSpeed * 3.6;
+}
+
+function displayCurrentDay(fiveDaysData) {
+  var firstDayData = fiveDaysData[0];
+  var h3El = $("<h3>").text(`${firstDayData.city} ${firstDayData.date} `);
+  var iconEl = $("<img>").attr("src", firstDayData.icon);
+  h3El.append(iconEl);
+  var temperatureEl = $("<p>").text(`Temperature: ${firstDayData.temp}`);
+  var humidityEl = $("<p>").text(`Humidity: ${firstDayData.humidity}`);
+  var windEl = $("<p>").text(`Wind: ${firstDayData.wind}`);
+  $("#today").append(h3El, temperatureEl, humidityEl, windEl);
 }
