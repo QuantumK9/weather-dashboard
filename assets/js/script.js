@@ -30,7 +30,7 @@ $("#search-button").on("click", function (event) {
       url: queryURL,
       method: "GET",
     }).then(function (response) {
-      console.log(response);
+      // console.log(response);
       var results = response.list;
       var timeStamps = [];
       var currentTimestamp;
@@ -40,6 +40,15 @@ $("#search-button").on("click", function (event) {
           timeStamps.push(item.dt);
           currentTimestamp = item.dt;
           console.log(currentTimestamp, item.dt_txt);
+          var firstDay = {
+            city: city,
+            date: moment.unix(item.dt).format("MM/DD/YYYY"),
+            icon: `http://openweathermap.org/img/w/${item.weather[0].icon}.png`,
+            temp: `${Math.round(item.main.temp - 273)} °C`,
+            humidity: `${item.main.humidity} %`,
+            // wind:
+          };
+          console.log(firstDay);
         }
         if (
           item.dt === currentTimestamp + 86400 ||
@@ -54,10 +63,10 @@ $("#search-button").on("click", function (event) {
       });
       console.log(timeStamps);
 
-      console.log(response.list[0].dt);
-      var unixValue = response.list[3].dt;
-      var dateString = moment.unix(unixValue).format("MM/DD/YYYY");
-      console.log(dateString);
+      // console.log(response.list[0].dt);
+      // var unixValue = response.list[3].dt;
+      // var dateString = moment.unix(unixValue).format("MM/DD/YYYY");
+      // console.log(dateString);
     });
   });
 });
