@@ -61,7 +61,19 @@ $("#search-button").on("click", function (event) {
           item.dt === currentTimestamp + 4 * 86400
         ) {
           // console.log(item, " is one day later", item.dt_txt);
+          var futureDay = {
+            city: city,
+            date: moment.unix(item.dt).format("MM/DD/YYYY"),
+            icon: `http://openweathermap.org/img/w/${item.weather[0].icon}.png`,
+            temp: `${Math.round(item.main.temp - 273)} °C`,
+            humidity: `${item.main.humidity} %`,
+            wind: `${
+              Math.round(convertingWindToKph(item.wind.speed) * 100) / 100
+            } Km/h`,
+          };
+          fiveDaysData.push(futureDay);
           timeStamps.push(item.dt);
+          console.log(fiveDaysData);
         }
         // console.log();
       });
