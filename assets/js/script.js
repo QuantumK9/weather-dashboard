@@ -46,9 +46,13 @@ $("#search-button").on("click", function (event) {
             icon: `http://openweathermap.org/img/w/${item.weather[0].icon}.png`,
             temp: `${Math.round(item.main.temp - 273)} °C`,
             humidity: `${item.main.humidity} %`,
-            // wind:
+            wind: `${
+              Math.round(convertingWindToKph(item.wind.speed) * 100) / 100
+            } Km/h`,
           };
+          fiveDaysData.push(firstDay);
           console.log(firstDay);
+          console.log(fiveDaysData);
         }
         if (
           item.dt === currentTimestamp + 86400 ||
@@ -56,12 +60,12 @@ $("#search-button").on("click", function (event) {
           item.dt === currentTimestamp + 3 * 86400 ||
           item.dt === currentTimestamp + 4 * 86400
         ) {
-          console.log(item, " is one day later", item.dt_txt);
+          // console.log(item, " is one day later", item.dt_txt);
           timeStamps.push(item.dt);
         }
         // console.log();
       });
-      console.log(timeStamps);
+      // console.log(timeStamps);
 
       // console.log(response.list[0].dt);
       // var unixValue = response.list[3].dt;
@@ -70,3 +74,8 @@ $("#search-button").on("click", function (event) {
     });
   });
 });
+
+//helper functions
+function convertingWindToKph(windSpeed) {
+  return windSpeed * 3.6;
+}
