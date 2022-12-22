@@ -6,6 +6,13 @@ let cities = [
   // },
 ];
 
+$(document).ready(function () {
+  var storedCities = JSON.parse(localStorage.getItem("cities"));
+  if (storedCities !== null) {
+    cities = storedCities;
+  }
+});
+
 // event listenter on search button
 $("#search-button").on("click", function (event) {
   // var person = $(this).attr("data-city");
@@ -86,6 +93,7 @@ $("#search-button").on("click", function (event) {
       displayCurrentDay(fiveDaysData);
       // console.log(timeStamps);
       addCityToCities(city, fiveDaysData);
+      addToLocalStorage(cities);
       // console.log(response.list[0].dt);
       // var unixValue = response.list[3].dt;
       // var dateString = moment.unix(unixValue).format("MM/DD/YYYY");
@@ -110,14 +118,27 @@ function displayCurrentDay(fiveDaysData) {
   $("#today").append(h3El, temperatureEl, humidityEl, windEl);
 }
 
+// function that adds city with data to cities state
 function addCityToCities(city, fiveDaysData) {
-  cities.map(function (el) {
-    if (el.cityName === city) {
+  let cityExists = false;
+  cities.map((ct) => {
+    if (ct.cityName === city) {
+      console.log(`city already exists`);
+      cityExists = true;
       return;
     }
   });
-  cities.push({
-    cityName: city,
-    data: fiveDaysData,
-  });
+  if (!cityExists) {
+    console.log("It doesnt exist so I add it!");
+    cities.push({
+      cityName: city,
+      data: fiveDaysData,
+    });
+  }
 }
+
+// function that stores cities to localstorage
+function addToLocalStorage(cities) {
+  localStorage.setItem("cities", JSON.stringify(cities));
+}
+// function that adds button for city searched
