@@ -1,4 +1,10 @@
 // console.log("yo");
+let cities = [
+  // {
+  //   cityName: "",
+  //   data: [],
+  // },
+];
 
 // event listenter on search button
 $("#search-button").on("click", function (event) {
@@ -79,7 +85,7 @@ $("#search-button").on("click", function (event) {
       });
       displayCurrentDay(fiveDaysData);
       // console.log(timeStamps);
-
+      addCityToCities(city, fiveDaysData);
       // console.log(response.list[0].dt);
       // var unixValue = response.list[3].dt;
       // var dateString = moment.unix(unixValue).format("MM/DD/YYYY");
@@ -102,4 +108,16 @@ function displayCurrentDay(fiveDaysData) {
   var humidityEl = $("<p>").text(`Humidity: ${firstDayData.humidity}`);
   var windEl = $("<p>").text(`Wind: ${firstDayData.wind}`);
   $("#today").append(h3El, temperatureEl, humidityEl, windEl);
+}
+
+function addCityToCities(city, fiveDaysData) {
+  cities.map(function (el) {
+    if (el.cityName === city) {
+      return;
+    }
+  });
+  cities.push({
+    cityName: city,
+    data: fiveDaysData,
+  });
 }
