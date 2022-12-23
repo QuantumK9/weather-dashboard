@@ -93,7 +93,7 @@ function renderButtons() {
   // Loops through the array of cities
   cities.map(function (ct) {
     var btnEl = $("<button>");
-    btnEl.addClass("city");
+    btnEl.addClass("city btn btn-secondary btn-sm btn-block");
     btnEl.attr("data-city", ct.cityName);
     btnEl.text(ct.cityName);
     $("#history").append(btnEl);
