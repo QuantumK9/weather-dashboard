@@ -44,6 +44,7 @@ function displayCurrentDay(fiveDaysData) {
   var humidityEl = $("<p>").text(`Humidity: ${firstDayData.humidity}`);
   var windEl = $("<p>").text(`Wind: ${firstDayData.wind}`);
   $("#today").append(h3El, temperatureEl, humidityEl, windEl);
+  $("#today").addClass("today");
 }
 
 function displayFiveDayForecast(fiveDaysData) {

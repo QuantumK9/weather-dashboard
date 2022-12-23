@@ -29,8 +29,7 @@
   opacity: 0.7;
 }
 
-#today {
-  /* border: 2px solid black; */
+.today {
   padding: 10px;
   background-color: #F2E5E5;
   border-radius: 5px;
