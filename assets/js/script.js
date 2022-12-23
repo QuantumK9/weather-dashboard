@@ -93,6 +93,7 @@ $("#search-button").on("click", function (event) {
       displayCurrentDay(fiveDaysData);
       displayFiveDayForecast(fiveDaysData);
       addCityToCities(city, fiveDaysData);
+      renderButtons(cities);
       addToLocalStorage(cities);
     });
   });
@@ -119,7 +120,7 @@ function displayFiveDayForecast(fiveDaysData) {
   $("#forecast").empty();
   fiveDaysData.map(function (day) {
     var dayDiv = $("<div>");
-    dayDiv.attr("class", "card col px-1 py2 mx-1  ");
+    dayDiv.attr("class", "card col px-1 py-2 mx-1  ");
     var h5El = $("<h5>").text(`${day.date} `);
     var iconEl = $("<img>").attr("src", day.icon);
 
@@ -155,3 +156,16 @@ function addToLocalStorage(cities) {
   localStorage.setItem("cities", JSON.stringify(cities));
 }
 // function that adds button for city searched
+function renderButtons() {
+  $("#history").empty();
+
+  // Loops through the array of cities
+
+  cities.map(function (ct) {
+    var btnEl = $("<button>");
+    btnEl.addClass("city");
+    btnEl.attr("data-city", ct.cityName);
+    btnEl.text(ct.cityName);
+    $("#history").append(btnEl);
+  });
+}
