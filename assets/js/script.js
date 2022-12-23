@@ -118,13 +118,16 @@ function displayCurrentDay(fiveDaysData) {
 function displayFiveDayForecast(fiveDaysData) {
   $("#forecast").empty();
   fiveDaysData.map(function (day) {
-    var h3El = $("<h3>").text(`${day.city} ${day.date} `);
+    var dayDiv = $("<div>");
+    dayDiv.attr("class", "card col px-1 py2 mx-1  ");
+    var h5El = $("<h5>").text(`${day.date} `);
     var iconEl = $("<img>").attr("src", day.icon);
-    h3El.append(iconEl);
-    var temperatureEl = $("<p>").text(`Temperature: ${day.temp}`);
+
+    var temperatureEl = $("<p>").text(`Temp: ${day.temp}`);
     var humidityEl = $("<p>").text(`Humidity: ${day.humidity}`);
 
-    $("#today").append(h3El, temperatureEl, humidityEl);
+    dayDiv.append(h5El, iconEl, temperatureEl, humidityEl);
+    $("#forecast").append(dayDiv);
   });
 }
 

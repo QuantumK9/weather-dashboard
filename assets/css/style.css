@@ -1,0 +1,20 @@
+.card {
+  /* display: inline; */
+  background-color: #3A4F7A;
+  color:aliceblue;
+  
+}
+
+.card img {
+  width: 40px;
+  height: 40px;
+}
+
+.card p {
+  font-size:0.75rem;
+}   
+
+#forecast {
+  margin-left: 0;
+  margin-right: 0;
+}
