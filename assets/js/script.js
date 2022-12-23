@@ -91,7 +91,7 @@ $("#search-button").on("click", function (event) {
         // console.log();
       });
       displayCurrentDay(fiveDaysData);
-      // console.log(timeStamps);
+      displayFiveDayForecast(fiveDaysData);
       addCityToCities(city, fiveDaysData);
       addToLocalStorage(cities);
     });
@@ -113,6 +113,19 @@ function displayCurrentDay(fiveDaysData) {
   var humidityEl = $("<p>").text(`Humidity: ${firstDayData.humidity}`);
   var windEl = $("<p>").text(`Wind: ${firstDayData.wind}`);
   $("#today").append(h3El, temperatureEl, humidityEl, windEl);
+}
+
+function displayFiveDayForecast(fiveDaysData) {
+  $("#forecast").empty();
+  fiveDaysData.map(function (day) {
+    var h3El = $("<h3>").text(`${day.city} ${day.date} `);
+    var iconEl = $("<img>").attr("src", day.icon);
+    h3El.append(iconEl);
+    var temperatureEl = $("<p>").text(`Temperature: ${day.temp}`);
+    var humidityEl = $("<p>").text(`Humidity: ${day.humidity}`);
+
+    $("#today").append(h3El, temperatureEl, humidityEl);
+  });
 }
 
 // function that adds city with data to cities state
