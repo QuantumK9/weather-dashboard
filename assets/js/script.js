@@ -20,7 +20,7 @@ $("#search-button").on("click", function (event) {
   // console.log("event triggered");
   // This line of code will grab the input from the textbox
   var city = $("#search-input").val().trim();
-  console.log(city);
+  // console.log(city);
 
   // AJAX request from Geolocation API for lon and lat of a city
   var API_KEY = "678a5dc678523498214a6c93764d73f1";
@@ -52,7 +52,7 @@ $("#search-button").on("click", function (event) {
         if (i === 0) {
           timeStamps.push(item.dt);
           currentTimestamp = item.dt;
-          console.log(currentTimestamp, item.dt_txt);
+          // console.log(currentTimestamp, item.dt_txt);
           var firstDay = {
             city: city,
             date: moment.unix(item.dt).format("MM/DD/YYYY"),
@@ -94,10 +94,6 @@ $("#search-button").on("click", function (event) {
       // console.log(timeStamps);
       addCityToCities(city, fiveDaysData);
       addToLocalStorage(cities);
-      // console.log(response.list[0].dt);
-      // var unixValue = response.list[3].dt;
-      // var dateString = moment.unix(unixValue).format("MM/DD/YYYY");
-      // console.log(dateString);
     });
   });
 });
@@ -108,6 +104,7 @@ function convertingWindToKph(windSpeed) {
 }
 
 function displayCurrentDay(fiveDaysData) {
+  $("#today").empty();
   var firstDayData = fiveDaysData[0];
   var h3El = $("<h3>").text(`${firstDayData.city} ${firstDayData.date} `);
   var iconEl = $("<img>").attr("src", firstDayData.icon);
