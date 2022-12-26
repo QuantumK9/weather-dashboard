@@ -143,7 +143,7 @@ function getCityForecastAndDisplay(city) {
           var firstDay = {
             city: city,
             date: moment.unix(item.dt).format("MM/DD/YYYY"),
-            icon: `http://openweathermap.org/img/w/${item.weather[0].icon}.png`,
+            icon: `https://openweathermap.org/img/w/${item.weather[0].icon}.png`,
             temp: `${Math.round(item.main.temp - 273)} °C`,
             humidity: `${item.main.humidity} %`,
             wind: `${
@@ -161,7 +161,7 @@ function getCityForecastAndDisplay(city) {
           var futureDay = {
             city: city,
             date: moment.unix(item.dt).format("MM/DD/YYYY"),
-            icon: `http://openweathermap.org/img/w/${item.weather[0].icon}.png`,
+            icon: `https://openweathermap.org/img/w/${item.weather[0].icon}.png`,
             temp: `${Math.round(item.main.temp - 273)} °C`,
             humidity: `${item.main.humidity} %`,
             wind: `${

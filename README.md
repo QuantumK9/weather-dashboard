@@ -20,7 +20,7 @@ If someone wants to, they can download the code from the following repository:
 
 The final project can me seen in the following link:
 
-[Iraklis K - Password Generator](https://quantumk9.github.io/weather-dashboard/)
+[Quantum K - Weather Forecast Dashboard](https://quantumk9.github.io/weather-dashboard/)
 
 
 
