@@ -24,7 +24,10 @@ $(document).on("click", ".city", function () {
 $("#search-button").on("click", function (event) {
   event.preventDefault();
   var city = $("#search-input").val().trim();
-
+  if (city === "") {
+    alert("Please enter a city name!");
+    return;
+  }
   getCityForecastAndDisplay(city);
   $("#search-input").val("");
 });
@@ -68,13 +71,13 @@ function addCityToCities(city, fiveDaysData) {
   let cityExists = false;
   cities.map((ct) => {
     if (ct.cityName === city) {
-      console.log(`city already exists`);
+      // console.log(`city already exists`);
       cityExists = true;
       return;
     }
   });
   if (!cityExists) {
-    console.log("It doesnt exist so I add it!");
+    // console.log("It doesnt exist so I add it!");
     cities.push({
       cityName: city,
       data: fiveDaysData,
