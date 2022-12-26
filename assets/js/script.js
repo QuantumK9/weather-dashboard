@@ -101,9 +101,6 @@ function renderButtons() {
   });
 }
 
-// Function that displays city info from button in history
-function displayCityInfo(city) {}
-
 // function that makes AJAX calls and handles data back
 function getCityForecastAndDisplay(city) {
   var API_KEY = "678a5dc678523498214a6c93764d73f1";
