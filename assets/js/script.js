@@ -28,6 +28,7 @@ $("#search-button").on("click", function (event) {
     alert("Please enter a city name!");
     return;
   }
+  city = capitalizeCityName(city);
   getCityForecastAndDisplay(city);
   $("#search-input").val("");
 });
@@ -35,6 +36,10 @@ $("#search-button").on("click", function (event) {
 //helper functions
 function convertingWindToKph(windSpeed) {
   return windSpeed * 3.6;
+}
+
+function capitalizeCityName(city) {
+  return city.charAt(0).toUpperCase() + city.slice(1);
 }
 
 function displayCurrentDay(fiveDaysData) {
