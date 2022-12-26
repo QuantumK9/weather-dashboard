@@ -112,7 +112,7 @@ function renderButtons() {
 // function that makes AJAX calls and handles data back
 function getCityForecastAndDisplay(city) {
   var API_KEY = "678a5dc678523498214a6c93764d73f1";
-  var geolocationQueryURL = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${API_KEY}`;
+  var geolocationQueryURL = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${API_KEY}`;
 
   $.ajax({
     url: geolocationQueryURL,
@@ -121,7 +121,7 @@ function getCityForecastAndDisplay(city) {
     var lat = response[0].lat;
     var lon = response[0].lon;
 
-    var queryURL = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&cnt=50&appid=${API_KEY}`;
+    var queryURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&cnt=50&appid=${API_KEY}`;
 
     // second AJAX call for weather data , using lon and lat from the previous
     return $.ajax({
