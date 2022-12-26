@@ -24,7 +24,11 @@ $(document).on("click", ".city", function () {
 $("#search-button").on("click", function (event) {
   event.preventDefault();
   var city = $("#search-input").val().trim();
-
+  if (city === "") {
+    alert("Please enter a city name!");
+    return;
+  }
+  city = capitalizeCityName(city);
   getCityForecastAndDisplay(city);
   $("#search-input").val("");
 });
@@ -32,6 +36,10 @@ $("#search-button").on("click", function (event) {
 //helper functions
 function convertingWindToKph(windSpeed) {
   return windSpeed * 3.6;
+}
+
+function capitalizeCityName(city) {
+  return city.charAt(0).toUpperCase() + city.slice(1);
 }
 
 function displayCurrentDay(fiveDaysData) {
@@ -68,13 +76,13 @@ function addCityToCities(city, fiveDaysData) {
   let cityExists = false;
   cities.map((ct) => {
     if (ct.cityName === city) {
-      console.log(`city already exists`);
+      // console.log(`city already exists`);
       cityExists = true;
       return;
     }
   });
   if (!cityExists) {
-    console.log("It doesnt exist so I add it!");
+    // console.log("It doesnt exist so I add it!");
     cities.push({
       cityName: city,
       data: fiveDaysData,
